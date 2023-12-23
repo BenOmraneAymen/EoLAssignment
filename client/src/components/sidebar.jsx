@@ -28,6 +28,12 @@ export default function Sidebar() {
         >
           Process Flow
         </Link> */}
+        <Link
+          to={"/dashboard/compare"}
+          className="text-base lg:text-lg font-normal text-slate-300 hover:cursor-pointer px-6 py-3 hover:bg-green-950 "
+        >
+          Bottle Comparaison
+        </Link>
       </div>
     </div>
   );
