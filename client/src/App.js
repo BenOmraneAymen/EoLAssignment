@@ -5,7 +5,6 @@ import LoginScreen from './screens/login';
 import BottleScreen from './components/bottle';
 import ProcessScreen from './components/process';
 import CalculateScreen from './components/caculate';
-import ProcessFlow from './components/processFlow';
 import ProcessDiagram from './components/processDiagram';
 import BottleComparison from './components/bottleComparison';
 
@@ -30,8 +29,7 @@ function App() {
           <div className="h-28"></div>
         </DashboardScreen>} />
         <Route path="/dashboard/processFlow" element={<>
-          <ProcessFlow />
-          <div className="h-28"></div>
+          <ProcessDiagram />
         </>} />
         <Route path="/dashboard/compare" element={<DashboardScreen>
           <BottleComparison />

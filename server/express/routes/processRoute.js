@@ -39,7 +39,9 @@ router.post('/', async (req, res) => {
 
         console.log(req.body)
 
-        const processes = await prisma.process.findMany({})
+        const processes = await prisma.process.findMany({where:{
+            BottleType: req.body.BottleType
+        }})
 
         processes.forEach(async (process) => {
             if (process.position >= req.body.position) {

@@ -1,7 +1,5 @@
 import { useEffect, useState } from "react";
-import { useStore } from "zustand";
 import { getAllProcesses } from "../service/processService";
-import { useFlowStore } from "../store/store";
 import ProcessCard from "./processCard";
 import ProcessModal from "./processModal";
 
@@ -9,21 +7,10 @@ export default function ProcessScreen({ title }) {
   const [modal, setModal] = useState(false);
   const [processes, setProcesses] = useState([]);
 
-  const setElements = useFlowStore((state) => state.setElements);
- 
   async function getProcesses() {
     await getAllProcesses(title)
       .then((res) => {
         setProcesses(res.data);
-        setElements(
-          res.data.map((process) => {
-            return {
-              id: process._id,
-              data: { label: process.name },
-              position: { x: process.position, y: process.position },
-            };
-          })
-        );
       })
       .catch((err) => {
         console.log(err);
@@ -32,7 +19,6 @@ export default function ProcessScreen({ title }) {
 
   useEffect(() => {
     getProcesses();
-    console.log(useFlowStore.getState().elements);
   }, []);
 
   return (
